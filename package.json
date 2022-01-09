@@ -11,19 +11,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:sirosuzume.rename.unnamed",
-    "onCommand:sirosuzume.insert.test-snippet"
+    "onCommand:editor.create.jest"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "sirosuzume.rename.unnamed",
-        "title": "newFile.tsをdescribeの変数に応じてリネーム",
-        "shortTitle": "newFile.tsのリネーム"
-      },
-      {
-        "command": "sirosuzume.insert.test-snippet",
+        "command": "editor.create.jest",
         "title": "選択された関数名を元にテストのスニペットを挿入"
       }
     ]

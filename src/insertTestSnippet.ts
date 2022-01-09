@@ -4,6 +4,7 @@ import { buildNewTestFileName } from './buildNewTestFileName';
 import { pickExtensionFromFileName } from './pickExtensionFromFileName';
 import { pickFileDirectoryFromDocumentFileName } from './pickFileDirectoryFromDocumentFileName';
 import { pickFileNameFromDocumentFileName } from './pickFileNameFromDocumentFileName';
+import { pickFileNameWithoutExtension } from './pickFileNameWithoutExtension';
 
 export async function insertTestSnippet() {
   const { activeTextEditor } = window;
@@ -12,15 +13,19 @@ export async function insertTestSnippet() {
     return;
   }
   const { document, selection } = activeTextEditor;
-  const functionName = document.getText(new Range(selection.start, selection.end));
+
   const fileName = pickFileNameFromDocumentFileName(document.fileName);
   const extension = pickExtensionFromFileName(fileName);
   const pathName = pickFileDirectoryFromDocumentFileName(document.fileName);
-  const testFileName = buildNewTestFileName(pathName, functionName, extension);
 
-  const template = `import { ${functionName} } from './${fileName}';
+  const functionName = document.getText(new Range(selection.start, selection.end));
+  const testFileName = buildNewTestFileName(pathName, functionName, extension);
+  const fileNameWithoutExtension = pickFileNameWithoutExtension(fileName);
+
+  const template = `import { ${functionName} } from './${fileNameWithoutExtension}';
+
 describe(${functionName}, () => {
-  it('should be', () => {
+  it('should be true', () => {
     const result = ${functionName}();
     expect(result).toBe(true);
   });
