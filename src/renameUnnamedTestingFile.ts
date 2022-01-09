@@ -2,7 +2,7 @@ import { renameSync } from 'fs';
 import { commands, Uri, window } from 'vscode';
 import { buildNewTestFileName } from './buildNewTestFileName';
 import { findTestingFunctionName } from './findTestingFunctionName';
-import { pickExtensionOfFile as pickExtensionFromFileName } from './pickExtensionOfFile';
+import { pickExtensionFromFileName } from './pickExtensionFromFileName';
 import { pickFileDirectoryFromDocumentFileName } from './pickFileDirectoryFromDocumentFileName';
 import { pickFileNameFromDocumentFileName } from './pickFileNameFromDocumentFileName';
 

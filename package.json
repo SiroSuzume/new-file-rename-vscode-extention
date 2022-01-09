@@ -11,14 +11,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:automatic-jest-generator.generate"
+    "onCommand:sirosuzume.rename.unnamed",
+    "onCommand:sirosuzume.insert.test-snippet"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "automatic-jest-generator.generate",
-        "title": "newFile.tsをdescribeの変数に応じてリネーム"
+        "command": "sirosuzume.rename.unnamed",
+        "title": "newFile.tsをdescribeの変数に応じてリネーム",
+        "shortTitle": "newFile.tsのリネーム"
+      },
+      {
+        "command": "sirosuzume.insert.test-snippet",
+        "title": "選択された関数名を元にテストのスニペットを挿入"
       }
     ]
   },
