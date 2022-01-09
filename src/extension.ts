@@ -1,14 +1,14 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import { renameSync } from 'fs';
-import { commands, ExtensionContext, window } from 'vscode';
+import { commands, ExtensionContext, Uri, window } from 'vscode';
 import { buildNewTestFileName } from './buildNewTestFileName';
 import { findTestingFunctionName } from './findTestingFunctionName';
 import { pickExtensionOfFile as pickExtensionFromFileName } from './pickExtensionOfFile';
 import { pickFileDirectoryFromDocumentFileName } from './pickFileDirectoryFromDocumentFileName';
 import { pickFileNameFromDocumentFileName } from './pickFileNameFromDocumentFileName';
 
-export function generateTask(): void {
+export async function generateTask() {
   const { activeTextEditor } = window;
   if (!activeTextEditor) {
     return;
@@ -25,7 +25,6 @@ export function generateTask(): void {
   }
 
   const text = document.getText();
-
   const testingFunctionName = findTestingFunctionName(text);
 
   if (!testingFunctionName) {
@@ -35,6 +34,8 @@ export function generateTask(): void {
 
   const newTestFileName = buildNewTestFileName(pathName, testingFunctionName, extension);
   renameSync(document.fileName, newTestFileName);
+
+  await commands.executeCommand('vscode.open', Uri.file(newTestFileName));
 
   window.showInformationMessage(`'${document.fileName}' renamed to '${newTestFileName}'`);
 }

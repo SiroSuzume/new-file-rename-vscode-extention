@@ -2,6 +2,6 @@ export function buildNewTestFileName(
   pathName: string,
   newFileName: string,
   extension: string,
-): import('fs').PathLike {
+): string {
   return `${pathName}/${newFileName}.test.${extension}`;
 }
