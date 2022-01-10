@@ -1,10 +1,10 @@
 import { writeFileSync } from 'fs';
 import { parse } from 'path';
 import { commands, Range, Uri, window } from 'vscode';
+import { buildJestTemplate } from './buildJestTemplate';
 import { buildNewTestFileName } from './buildNewTestFileName';
-import { buildJestTemplate } from './jest/buildJestTemplate';
 
-export async function generateJestTemplate() {
+export async function generateJestTemplateFile() {
   const { activeTextEditor } = window;
 
   if (!activeTextEditor) {
