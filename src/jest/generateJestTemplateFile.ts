@@ -1,9 +1,9 @@
 import { writeFileSync } from 'fs';
 import { parse } from 'path';
 import { commands, Uri, window } from 'vscode';
+import { pickSelectedTextFromCurrentDocument } from '../pickSelectedTextFromCurrentDocument';
 import { buildNewTestFileName } from './buildNewTestFileName';
 import { insertJestTemplate } from './insertJestTemplate';
-import { pickSelectedTextFromCurrentDocument } from './pickSelectedTextFromCurrentDocument';
 
 export async function generateJestTemplateFile() {
   const { activeTextEditor } = window;
