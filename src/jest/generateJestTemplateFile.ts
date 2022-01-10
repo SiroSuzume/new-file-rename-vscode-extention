@@ -1,8 +1,9 @@
 import { writeFileSync } from 'fs';
 import { parse } from 'path';
-import { commands, Range, Uri, window } from 'vscode';
+import { commands, Uri, window } from 'vscode';
 import { buildNewTestFileName } from './buildNewTestFileName';
 import { insertJestTemplate } from './insertJestTemplate';
+import { pickSelectedTextFromCurrentDocument } from './pickSelectedTextFromCurrentDocument';
 
 export async function generateJestTemplateFile() {
   const { activeTextEditor } = window;
@@ -10,10 +11,10 @@ export async function generateJestTemplateFile() {
   if (!activeTextEditor) {
     return;
   }
-  const { document, selection } = activeTextEditor;
+  const { document } = activeTextEditor;
 
   const { dir, ext, name } = parse(document.fileName);
-  const functionName = document.getText(new Range(selection.start, selection.end));
+  const functionName = pickSelectedTextFromCurrentDocument(activeTextEditor);
 
   const newTestFileName = buildNewTestFileName(dir, functionName, ext);
   writeFileSync(newTestFileName, '');
