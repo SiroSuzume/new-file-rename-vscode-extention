@@ -18,7 +18,9 @@
     "commands": [
       {
         "command": "sirosuzume.create.jestTemplate",
-        "title": "選択された関数名を元にテストのスニペットを挿入"
+        "title": "Create new Jest unit test file from selecting function name in same folder",
+        "category": "TypeScript",
+        "shortTitle": "Create new Jest unit test file from function"
       }
     ]
   },
