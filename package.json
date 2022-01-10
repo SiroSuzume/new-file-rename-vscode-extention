@@ -11,13 +11,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:editor.create.jest"
+    "onCommand:sirosuzume.create.jestTemplate"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "editor.create.jest",
+        "command": "sirosuzume.create.jestTemplate",
         "title": "選択された関数名を元にテストのスニペットを挿入"
       }
     ]
