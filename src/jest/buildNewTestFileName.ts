@@ -3,5 +3,5 @@ export function buildNewTestFileName(
   newFileName: string,
   extension: string,
 ): string {
-  return `${pathName}/${newFileName}.test.${extension}`;
+  return `${pathName}/${newFileName}.test${extension}`;
 }
