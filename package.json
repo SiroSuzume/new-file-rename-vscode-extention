@@ -11,16 +11,23 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:sirosuzume.create.jestTemplate"
+    "onCommand:sirosuzume.generate.jestTemplate",
+    "onCommand:sirosuzume.generate.storybookTemplate"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "sirosuzume.create.jestTemplate",
-        "title": "Create new Jest unit test file from selecting function name in same folder",
+        "command": "sirosuzume.generate.jestTemplate",
+        "title": "Generate new Jest unit test file from selecting function name in same folder",
         "category": "TypeScript",
-        "shortTitle": "Create new Jest unit test file from function"
+        "shortTitle": "Generate new Jest unit test file from function"
+      },
+      {
+        "command": "sirosuzume.generate.storybookTemplate",
+        "title": "Generate new story file from selecting function name in same folder",
+        "category": "TypeScript",
+        "shortTitle": "Generate new story file from function"
       }
     ]
   },
