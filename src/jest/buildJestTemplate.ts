@@ -1,12 +1,12 @@
 import { buildDescribeFromFunctionName } from './buildDescribeFromFunctionName';
-import { buildImportFromBaseFile } from './buildImportFromBaseFile';
+import { buildDescribeFromFunctionNameForHooks } from './buildDescribeFromFunctionNameForHooks';
 
 export function buildJestTemplate(
   functionName: string,
   fileNameWithoutExtension: string,
 ) {
-  return `${buildImportFromBaseFile([functionName], fileNameWithoutExtension)}
-
-${buildDescribeFromFunctionName(functionName)}
-`;
+  const isHooks = functionName.startsWith('use');
+  return isHooks
+    ? buildDescribeFromFunctionNameForHooks(functionName, fileNameWithoutExtension)
+    : buildDescribeFromFunctionName(functionName, fileNameWithoutExtension);
 }
