@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
 import { parse } from 'path';
 import { commands, Uri, window } from 'vscode';
-import { pickSelectingWord } from '../pickSelectingWord';
+import { pickSelectedTextFromCurrentDocument } from '../pickSelectedTextFromCurrentDocument';
 import { buildNewStorybookFileName } from './buildNewStorybookFileName';
 import { insertStorybookTemplate } from './insertStorybookTemplate';
 
@@ -14,7 +14,7 @@ export async function generateStorybookTemplateFile() {
   const { document } = activeTextEditor;
 
   const { dir, name } = parse(document.fileName);
-  const functionName = pickSelectingWord(activeTextEditor);
+  const functionName = pickSelectedTextFromCurrentDocument(activeTextEditor);
 
   const newTestFileName = buildNewStorybookFileName(dir, name);
   writeFileSync(newTestFileName, '');
